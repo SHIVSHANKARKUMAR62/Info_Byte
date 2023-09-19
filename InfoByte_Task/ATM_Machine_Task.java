@@ -10,7 +10,7 @@ interface ATM {
     void withdrawing(double amount);
     void depositing(double amount);
     void checkingBalance();
-    void Transation();
+    void Transaction();
 
 }
 
@@ -19,7 +19,7 @@ class userAccount implements ATM {
 
     double value = 0;
 
-    boolean transaltion = true;
+    boolean transaction = true;
 
     String[] arr = new String[]{"withdrawing","Deposit"};
 
@@ -34,9 +34,9 @@ class userAccount implements ATM {
     ArrayList<Double> sum =new ArrayList<>();
 
     @Override
-    public void Transation() {
+    public void Transaction() {
         for (int i =0;i< day.size();i++) {
-            if (transaltion) {
+            if (transaction) {
                 System.out.println(sum.get(i) + " is " + tran.get(i) + " on Date: " + day.get(i) + "/" + month.get(i) + "/" + year.get(i)+" And Time is: " + hour.get(i) + ":" + min.get(i) + ":" + sec.get(i));
 
             } else {
@@ -56,7 +56,7 @@ class userAccount implements ATM {
             value = value - amount;
             System.out.println("Successfully Withdraw amount of "+amount);
             System.out.println("Rest Balance in your account is: "+value);
-            transaltion = false;
+            transaction = false;
             sum.add(amount);
             day.add(ld.getDayOfMonth());
             month.add(ld.getMonthValue());
@@ -84,7 +84,7 @@ class userAccount implements ATM {
         value = value + amount;
         System.out.println("Successfully Deposit "+amount+" Amount in your Account...");
         System.out.println("Total amount in your account is: "+value);
-        transaltion = true;
+        transaction = true;
         sum.add(amount);
         day.add(ld.getDayOfMonth());
         month.add(ld.getMonthValue());
@@ -114,7 +114,6 @@ class ProcessPart {
     double amount;
     public void process(){
 
-        System.out.println("Enter Number.....");
         System.out.print("Create a PIN Number for Your ATM: ");
         int createPin = sc.nextInt();
         System.out.println("...................................");
@@ -126,7 +125,7 @@ class ProcessPart {
             try {
                 do {
 
-                    System.out.print("1.Depositing the amount\n2.Withdraw the amount\n3.Checking Balance\n4.Translation\nEnter Your Choice: ");
+                    System.out.print("1.Depositing the amount\n2.Withdraw the amount\n3.Checking Balance\n4.Transaction\nEnter Your Choice: ");
                     int choice = sc.nextInt();
                     // using enhance switch case
                     switch (choice) {
@@ -152,7 +151,7 @@ class ProcessPart {
                         case 4 -> {
                             System.out.println("...................................");
                             System.out.println("Translation list is");
-                            am.Transation();
+                            am.Transaction();
                             System.out.println("Total amount in your account is: " + am.value);
                             System.out.println("...................................");
                         }
